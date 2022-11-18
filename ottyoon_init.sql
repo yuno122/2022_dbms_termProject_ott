@@ -1,5 +1,11 @@
 /* 이름: ottyoon_init.sql*/
 /* 설명 */
+
+/* root 계정으로 접속, ottyoon 데이터베이스 생성 */
+DROP DATABASE IF EXISTS  ottyoon;
+create database ottyoon;
+commit;
+
 /* ottyoon data 를 초기화 */
  
 use ottyoon;
