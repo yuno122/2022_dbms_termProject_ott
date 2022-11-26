@@ -3,9 +3,12 @@
 // ottyoon database에 접속
 $conn = mysqli_connect("192.168.56.101:4567","yhshin","1234","ottyoon");
 
-//user 테이블의 select sql문
+//사용자 별 카드 검색 sql 문
 $sql = "
-  SELECT * FROM user WHERE username ='{$_POST['username']}';
+  SELECT user.userid,cardid,bank,validity
+  FROM creditCard,user
+  WHERE creditCard.userid = user.userid
+  and user.userid = '{$_POST['userid']}';
 ";
 
 //sql문 실행
@@ -13,10 +16,10 @@ $result = mysqli_query($conn,$sql);
 
 //sql문 실행 에러 발생 시
 if($result === false){
-  echo '데이터 검색 에러, 검색 할 username을 확인해보세요.';
+  echo '데이터 검색 에러, 검색 할 userid을 확인해보세요.';
   echo mysqli_error($conn);
 }else{
-  echo '데이터 검색 성공! <a href="index.php">돌아가기</a>';
+  echo '데이터 검색 성공! <a href="/index.php">돌아가기</a>';
 }
 ?>
 
@@ -27,34 +30,33 @@ if($result === false){
     <title>ottyoon</title>
   </head>
   <body>
-    <h2>#검색한 유저 목록</h2>
+    <h1>Ott platfrom database management system_yoonho</h1>
+    <h2>#사용자별 카드 목록</h2>
+    <a href="/index.php">메인으로 돌아가기</a>
 
     <table border="1" width="1000" height="300" align="center">
       <thead>
         <tr>
-        <th>uesrid</th>
-        <th>username</th>
-        <th>userpassword</th>
-        <th>phone</th>
-        <th>address</th>
+        <th>cardid</th>
+        <th>userid</th>
+        <th>bank</th>
+        <th>validity</th>
       </tr>
       </thead>
+
       <?php
       while($row = mysqli_fetch_array($result)){
         ?>
         <tr align = "center">
+        <td><?php echo $row['cardid'];?></td>
         <td><?php echo $row['userid'];?></td>
-        <td><?php echo $row['username'];?></td>
-        <td><?php echo $row['userpassword'];?></td>
-        <td><?php echo $row['phone'];?></td>
-        <td><?php echo $row['address'];?></td>
+        <td><?php echo $row['bank'];?></td>
+        <td><?php echo $row['validity'];?></td>
         </tr>
         <?php
       }
       ?>
-
       </table>
-
 
   </body>
 

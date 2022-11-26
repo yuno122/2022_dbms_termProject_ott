@@ -16,6 +16,6 @@ if($result === false){
   echo '데이터 삭제 에러, 삭제할 profileid를 확인해보세요.';
   echo mysqli_error($conn);
 }else{
-  echo '데이터 삭제 성공! <a href="select_profile.php">돌아가기</a>';
+  header('Location: select_user.php');
 }
 ?>

@@ -25,6 +25,6 @@ if($result === false){
   echo '데이터 삽입 에러 발생';
   echo mysqli_error($conn);
 }else{
-  echo '데이터 삽입 성공! <a href="select_contents.php">돌아가기</a>';
+  header('Location: select_user.php');
 }
 ?>

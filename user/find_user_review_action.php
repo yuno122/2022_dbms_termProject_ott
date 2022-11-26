@@ -20,7 +20,7 @@ if($result === false){
   echo '데이터 검색 에러, 검색 할 userid을 확인해보세요.';
   echo mysqli_error($conn);
 }else{
-  echo '데이터 검색 성공! <a href="index.php">돌아가기</a>';
+  echo '데이터 검색 성공! <a href="/index.php">돌아가기</a>';
 }
 ?>
 
@@ -32,8 +32,8 @@ if($result === false){
   </head>
   <body>
     <h1>Ott platfrom database management system_yoonho</h1>
-    <h2>#creditCard table</h2>
-    <a href="index.php">메인으로 돌아가기</a>
+    <h2>#사용자별 리뷰 목록</h2>
+    <a href="/index.php">메인으로 돌아가기</a>
 
     <table border="1" width="1000" height="300" align="center">
       <thead>

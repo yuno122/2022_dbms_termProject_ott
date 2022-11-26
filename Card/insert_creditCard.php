@@ -5,13 +5,13 @@ $conn = mysqli_connect("192.168.56.101:4567","yhshin","1234","ottyoon");
 
 //user 테이블의 insert sql문
 $sql = "
-  INSERT INTO review VALUES
+  INSERT INTO creditCard VALUES
   (
-        '{$_POST['reviewid']}',
+        '{$_POST['cardid']}',
         '{$_POST['userid']}',
-        '{$_POST['contentsid']}',
-        '{$_POST['content']}',
-        '{$_POST['gpa']}'
+        '{$_POST['bank']}',
+        '{$_POST['validity']}',
+        '{$_POST['cardpassword']}'
   )
 ";
 
@@ -23,6 +23,6 @@ if($result === false){
   echo '데이터 삽입 에러 발생';
   echo mysqli_error($conn);
 }else{
-  echo '데이터 삽입 성공! <a href="select_review.php">돌아가기</a>';
+  header('Location: select_user.php');
 }
 ?>

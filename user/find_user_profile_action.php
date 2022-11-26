@@ -5,10 +5,10 @@ $conn = mysqli_connect("192.168.56.101:4567","yhshin","1234","ottyoon");
 
 //사용자 별 카드 검색 sql 문
 $sql = "
-  SELECT contents.contentsid,title,genre,userid,content,gpa
-  FROM contents,review
-  WHERE contents.contentsid = review.contentsid
-  and review.contentsid = '{$_POST['contentsid']}';
+  SELECT profileid,user.userid,nickname,username,ratings
+  FROM profile,user
+  WHERE profile.userid = user.userid
+  and user.userid = '{$_POST['userid']}';
 ";
 
 //sql문 실행
@@ -16,10 +16,10 @@ $result = mysqli_query($conn,$sql);
 
 //sql문 실행 에러 발생 시
 if($result === false){
-  echo '데이터 검색 에러, 검색 할 contentsid를 확인해보세요.';
+  echo '데이터 검색 에러, 검색 할 userid을 확인해보세요.';
   echo mysqli_error($conn);
 }else{
-  echo '데이터 검색 성공! <a href="index.php">돌아가기</a>';
+  echo '데이터 검색 성공! <a href="/index.php">돌아가기</a>';
 }
 ?>
 
@@ -31,18 +31,17 @@ if($result === false){
   </head>
   <body>
     <h1>Ott platfrom database management system_yoonho</h1>
-    <h2>#creditCard table</h2>
-    <a href="index.php">메인으로 돌아가기</a>
+    <h2>#사용자별 프로필 목록</h2>
+    <a href="/index.php">메인으로 돌아가기</a>
 
     <table border="1" width="1000" height="300" align="center">
       <thead>
         <tr>
-        <th>contentsid</th>
-        <th>title</th>
-        <th>genre</th>
+        <th>profileid</th>
+        <th>nickname</th>
         <th>userid</th>
-        <th>content</th>
-        <th>gpa</th>
+        <th>username</th>
+        <th>ratings</th>
       </tr>
       </thead>
 
@@ -50,12 +49,11 @@ if($result === false){
       while($row = mysqli_fetch_array($result)){
         ?>
         <tr align = "center">
-        <td><?php echo $row['contentsid'];?></td>
-        <td><?php echo $row['title'];?></td>
-        <td><?php echo $row['genre'];?></td>
+        <td><?php echo $row['profileid'];?></td>
+        <td><?php echo $row['nickname'];?></td>
         <td><?php echo $row['userid'];?></td>
-        <td><?php echo $row['content'];?></td>
-        <td><?php echo $row['gpa'];?></td>
+        <td><?php echo $row['username'];?></td>
+        <td><?php echo $row['ratings'];?></td>
         </tr>
         <?php
       }

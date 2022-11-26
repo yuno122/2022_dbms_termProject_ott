@@ -10,7 +10,7 @@
 
 
     <form action="find_user_card_action.php" method="POST">
-      <h3>사용자 별 결제카드를 검색합니다.</h3>
+      <h3>사용자별 결제카드를 검색합니다.</h3>
       <h3>사용자의 아이디를 입력하세요. </h3>
       <p><input type="text" name="userid" placeholder="아이디" ></p>
       <p><input type="submit" value="submit"></p>

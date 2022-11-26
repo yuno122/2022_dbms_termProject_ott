@@ -15,7 +15,7 @@ $result = mysqli_query($conn,$sql);
   <body>
     <h1>Ott platfrom database management system_yoonho</h1>
     <h2>#profile table</h2>
-    <a href="index.php">메인으로 돌아가기</a>
+    <a href="/index.php">메인으로 돌아가기</a>
 
     <table border="1" width="1000" height="300" align="center">
       <thead>
